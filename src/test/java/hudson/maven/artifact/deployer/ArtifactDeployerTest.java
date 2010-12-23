@@ -1,4 +1,4 @@
-package org.apache.maven.artifact.deployer;
+package hudson.maven.artifact.deployer;
 
 /*
  * Licensed to the Apache Software Foundation (ASF) under one
@@ -19,14 +19,16 @@ package org.apache.maven.artifact.deployer;
  * under the License.
  */
 
-import org.apache.maven.artifact.AbstractArtifactComponentTestCase;
-import org.apache.maven.artifact.Artifact;
+import hudson.maven.artifact.AbstractArtifactComponentTestCase;
 
 import java.io.File;
 
+import org.apache.maven.artifact.Artifact;
+import org.apache.maven.artifact.deployer.ArtifactDeployer;
+
 /**
  * @author <a href="mailto:jason@maven.org">Jason van Zyl</a>
- * @version $Id: ArtifactDeployerTest.java 37617 2010-12-23 11:39:10Z olamy $
+ * @version $Id: ArtifactDeployerTest.java 37619 2010-12-23 11:46:04Z olamy $
  */
 public class ArtifactDeployerTest
     extends AbstractArtifactComponentTestCase
