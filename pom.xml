@@ -26,16 +26,16 @@ under the License.
   </parent>
 
   <artifactId>hudson-maven-artifact-manager</artifactId>
-  <version>1.0</version>
+  <version>1.1-SNAPSHOT</version>
 
   <name>Hudson Maven Artifact Manager</name>
   
   <description>hackhish version of artifact manager to continue support uniqueVersion = false with maven2 builds</description>
 
   <scm>
-    <connection>scm:svn:https://svn.java.net/svn/hudson~svn/tags/hudson-maven-artifact-manager-1.0</connection>
-    <developerConnection>scm:svn:https://svn.java.net/svn/hudson~svn/tags/hudson-maven-artifact-manager-1.0</developerConnection>
-    <url>https://hudson.dev.java.net/source/browse/hudson/tags/hudson-maven-artifact-manager-1.0</url>
+    <connection>scm:svn:https://svn.java.net/svn/hudson~svn/trunk/hudson/lib/hudson-maven-artifact-manager</connection>
+    <developerConnection>scm:svn:https://svn.java.net/svn/hudson~svn/trunk/hudson/lib/hudson-maven-artifact-manager</developerConnection>
+    <url>https://hudson.dev.java.net/source/browse/hudson/trunk/hudson/lib/hudson-maven-artifact-manager</url>
   </scm>
 
   <properties>
