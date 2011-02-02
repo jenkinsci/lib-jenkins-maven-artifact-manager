@@ -25,7 +25,8 @@ under the License.
     <version>1.7</version>
   </parent>
 
-  <artifactId>hudson-maven-artifact-manager</artifactId>
+  <groupId>org.jenkins-ci.lib</groupId>
+  <artifactId>jenkins-maven-artifact-manager</artifactId>
   <version>1.1-SNAPSHOT</version>
 
   <name>Hudson Maven Artifact Manager</name>
