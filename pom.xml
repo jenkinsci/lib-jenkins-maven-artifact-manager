@@ -34,9 +34,9 @@ under the License.
   <description>hackhish version of artifact manager to continue support uniqueVersion = false with maven2 builds</description>
 
   <scm>
-    <connection>scm:svn:https://svn.java.net/svn/hudson~svn/trunk/hudson/lib/hudson-maven-artifact-manager</connection>
-    <developerConnection>scm:svn:https://svn.java.net/svn/hudson~svn/trunk/hudson/lib/hudson-maven-artifact-manager</developerConnection>
-    <url>https://hudson.dev.java.net/source/browse/hudson/trunk/hudson/lib/hudson-maven-artifact-manager</url>
+    <connection>scm:git:git://github.com/jenkinsci/lib-jenkins-maven-artifact-manager.git</connection>
+    <developerConnection>scm:git:ssh://git@github.com/jenkinsci/lib-jenkins-maven-artifact-manager.git</developerConnection>
+    <url>https://github.com/jenkinsci/lib-jenkins-maven-artifact-manager</url>
   </scm>
 
   <properties>
