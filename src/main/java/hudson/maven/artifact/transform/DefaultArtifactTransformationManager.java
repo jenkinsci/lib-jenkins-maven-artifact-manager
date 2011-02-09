@@ -32,14 +32,12 @@ import org.apache.maven.repository.legacy.resolver.transform.ArtifactTransformat
 import org.apache.maven.repository.legacy.resolver.transform.ArtifactTransformationManager;
 import org.codehaus.plexus.component.annotations.Component;
 import org.codehaus.plexus.component.annotations.Requirement;
-import org.codehaus.plexus.personality.plexus.lifecycle.phase.Initializable;
-import org.codehaus.plexus.personality.plexus.lifecycle.phase.InitializationException;
 
 @Component(role=ArtifactTransformationManager.class,hint="maven2")
 public class DefaultArtifactTransformationManager
     implements ArtifactTransformationManager
 {
-    @Requirement(hints={"maven2"})
+    @Requirement(role=ArtifactTransformationMaven2.class, hint="maven2")
     private List<ArtifactTransformation> artifactTransformations;
     
 	

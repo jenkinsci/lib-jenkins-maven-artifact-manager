@@ -19,8 +19,15 @@ package hudson.maven.artifact.transform;
  * under the License.
  */
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
+import java.util.TimeZone;
+
 import org.apache.maven.artifact.Artifact;
 import org.apache.maven.artifact.deployer.ArtifactDeploymentException;
+import org.apache.maven.artifact.manager.WagonManager;
 import org.apache.maven.artifact.repository.ArtifactRepository;
 import org.apache.maven.artifact.repository.RepositoryRequest;
 import org.apache.maven.artifact.repository.metadata.Metadata;
@@ -28,28 +35,33 @@ import org.apache.maven.artifact.repository.metadata.RepositoryMetadata;
 import org.apache.maven.artifact.repository.metadata.RepositoryMetadataResolutionException;
 import org.apache.maven.artifact.repository.metadata.Snapshot;
 import org.apache.maven.artifact.repository.metadata.SnapshotArtifactRepositoryMetadata;
+import org.apache.maven.artifact.repository.metadata.SnapshotVersion;
 import org.apache.maven.artifact.repository.metadata.Versioning;
 import org.apache.maven.artifact.resolver.ArtifactNotFoundException;
 import org.apache.maven.artifact.resolver.ArtifactResolutionException;
-import org.apache.maven.repository.legacy.resolver.transform.ArtifactTransformation;
+import org.apache.maven.wagon.ResourceDoesNotExistException;
+import org.apache.maven.wagon.TransferFailedException;
 import org.codehaus.plexus.component.annotations.Component;
+import org.codehaus.plexus.component.annotations.Requirement;
 import org.codehaus.plexus.util.StringUtils;
-
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.List;
-import java.util.TimeZone;
+import org.sonatype.aether.RepositorySystem;
 
 /**
  * @author <a href="mailto:brett@apache.org">Brett Porter</a>
  * @author <a href="mailto:mmaczka@interia.pl">Michal Maczka</a>
  * @version $Id: SnapshotTransformation.java 37617 2010-12-23 11:39:10Z olamy $
  */
-@Component(role=ArtifactTransformation.class,hint="maven2")
+@Component(role=ArtifactTransformationMaven2.class,hint="maven2")
 public class SnapshotTransformation
     extends AbstractVersionTransformation
 {
+        
+    @Requirement
+    RepositorySystem repositorySystem;
+    
+    @Requirement
+    private WagonManager wagonManager;    
+    
     private String deploymentTimestamp;
 
     private static final TimeZone UTC_TIME_ZONE = TimeZone.getTimeZone( "UTC" );
@@ -152,11 +164,13 @@ public class SnapshotTransformation
                                                   ArtifactRepository remoteRepository )
         throws RepositoryMetadataResolutionException
     {
+       
+       
         RepositoryMetadata metadata = new SnapshotArtifactRepositoryMetadata( artifact );
-
+        
         getLogger().info( "Retrieving previous build number from " + remoteRepository.getId() );
         repositoryMetadataManager.resolveAlways( metadata, localRepository, remoteRepository );
-
+        
         int buildNumber = 0;
         Metadata repoMetadata = metadata.getMetadata();
         if ( ( repoMetadata != null )
@@ -167,6 +181,7 @@ public class SnapshotTransformation
         return buildNumber;
     }
 
+    
     public static DateFormat getUtcDateFormatter()
     {
         DateFormat utcDateFormatter = new SimpleDateFormat( UTC_TIMESTAMP_PATTERN );
