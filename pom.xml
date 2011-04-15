@@ -39,6 +39,13 @@ under the License.
     <url>https://github.com/jenkinsci/lib-jenkins-maven-artifact-manager</url>
   </scm>
 
+  <licenses>
+    <license>
+      <name>The Apache Software License, Version 2.0</name>
+      <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+    </license>
+  </licenses>
+
   <properties>
     <wagonVersion>1.0-beta-7</wagonVersion>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
